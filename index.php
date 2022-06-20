@@ -1,1 +1,3 @@
-sin_trabajo
+<?php
+echo "hola mundo";
+?>
