@@ -1,13 +1,10 @@
 <?php
 session_start();
 error_reporting(E_ERROR | E_PARSE);
-<<<<<<< HEAD
   include "data_camisetas.php";
   include "plantillas.php";
-=======
   include "data.php";
   include "templates.php";
->>>>>>> 4ca81da0c87fc56b455de2b5f51ebb12489b4566
   echo $header_html;
   if(isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0){
  ?>
@@ -21,11 +18,7 @@ error_reporting(E_ERROR | E_PARSE);
             <thead>
               <th>Código</th>
               <th>Producto</th>
-<<<<<<< HEAD
               <th style="text-align: right;">Cantidad</th>
-=======
-              <th style="text-align: right;">Cant</th>
->>>>>>> 4ca81da0c87fc56b455de2b5f51ebb12489b4566
               <th style="text-align: right;">Precio</th>
               <th style="text-align: right;">Subtotal</th>
               <th>&nbsp;</th>
@@ -75,11 +68,7 @@ error_reporting(E_ERROR | E_PARSE);
           <?php foreach ($products as $key => $value) { ?>
             <div class="col">
              <div class="card">
-<<<<<<< HEAD
                <img src="<?php echo './imagenes/'.$value["img"] ?>" class="card-img-top">
-=======
-               <img src="<?php echo './products_images/'.$value["img"] ?>" class="card-img-top">
->>>>>>> 4ca81da0c87fc56b455de2b5f51ebb12489b4566
                <div class="card-body">
                  <h5 class="card-title"><?php echo $value["name"].' (S/ '.$value["price"].') '?></h5>
                  <p class="card-text"><?php echo $value["description"] ?></p>
