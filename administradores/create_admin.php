@@ -4,7 +4,7 @@ include("db_connect.php");
 
 $mysql_conn = db_connect();
 
-$sql = "INSERT INTO administrador SET nombres = '".$_POST['u']."' , contraseña = MD5('".$_POST['p']."')";
+$sql = "INSERT INTO administrador SET nombres = '".$_POST['u']."', contraseña = MD5('".$_POST['p']."')";
 
 //echo $sql;
 $res = mysqli_query($mysql_conn, $sql);
