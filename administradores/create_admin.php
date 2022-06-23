@@ -1,6 +1,6 @@
 <?php
 
-include("db_connect.php");
+include("func/db_connect.php");
 
 $mysql_conn = db_connect();
 
