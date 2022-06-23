@@ -1,11 +1,11 @@
 <?php
 
-include("func/db_connect.php");
+include("db_connect.php");
 
 $mysql_conn = db_connect();
 
 //$sql = "SELECT id FROM administrador WHERE nombres = '".$_POST['u']."' and contraseña = MD5('".$_POST['p']."')";
-$sql = "SELECT id FROM administrador WHERE nombres = '".$_POST['u']."' and contraseña = '".$_POST['p']."'";
+$sql = "SELECT idadministrador FROM administrador WHERE nombres = '".$_POST['u']."' and contraseña = '".$_POST['p']."'";
 
 $res = mysqli_query($mysql_conn, $sql);
 
