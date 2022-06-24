@@ -111,7 +111,7 @@ if($_SESSION["conectado"] != "1"){
 				<div class="col-md-9 logo_electronics">
 					<h1 class="text-lg-left">
 						<a href="#" class="font-weight-bold font-italic">
-							<img src="imagenes/cc.png" alt=" " class="img-fluid" style="height: 120px;">Tienda Online
+							<img src="imagenes/nc_logo.png" alt=" " class="img-fluid" style="height: 70px;">NBA Collection
 						</a>
 					</h1>
 				</div>
@@ -164,7 +164,6 @@ if($_SESSION["conectado"] != "1"){
 								<th>Cliente</th>
 								<th>Email</th>
 								<th>Teléfono</th>
-								<th>Ciudad</th>
 								<th>Productos</th>
 								<th>Monto</th>
 								<th>Acción</th>
@@ -182,8 +181,7 @@ if($_SESSION["conectado"] != "1"){
 									echo "<td>$i</td>";
 									echo "<td>".$row["name"]."</td>";
 									echo "<td>".$row["email"]."</td>";
-									echo "<td>".$row["telefono"]."</td>";
-									echo "<td>".$row["local"]."</td>";
+									echo "<td>".$row["telefono"]."</td>";;
 									echo "<td>".$row["prendas"]."</td>";
 									echo "<td>s/. ".$row["monto"]."</td>";
 									$eliminar=$row["idboleta"];

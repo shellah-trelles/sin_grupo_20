@@ -104,7 +104,7 @@
 				<div class="col-md-9 logo_electronics">
 					<h1 class="text-lg-left">
 						<a href="#" class="font-weight-bold font-italic">
-							<img src="imagenes/cc.png" alt=" " class="img-fluid" style="height: 120px;">Tienda Online
+							<img src="imagenes/nc_logo.png" alt=" " class="img-fluid" style="height: 70px;">NBA Collection
 						</a>
 					</h1>
 				</div>
@@ -160,29 +160,25 @@
 								<th>Ciudad</th>
 								<th>Productos</th>
 								<th>Monto</th>
-								<th>Acción</th>
 							</tr>
 						</thead>
 
 						<tbody >
 							<?php
 
-								$consulta ="SELECT idboleta as idboleta, name, email, telefono, local, prendas, monto FROM boleta join cliente on cliente.email_cliente = boleta.email ";
+								$consulta ="SELECT idboleta as Nombre, email, telefono, local, prendas, monto FROM boleta join cliente on cliente.email_cliente = boleta.email ";
+								//$consulta ="SELECT idboleta as idboleta, name, email, telefono, local, prendas, monto FROM boleta";
 								$result = $mysql_conn->query($consulta);
 								$i = 1;
 								while($row = mysqli_fetch_array($result)){
 									echo "<tr>";
 									echo "<td>$i</td>";
-									echo "<td>".$row["name"]."</td>";
+									echo "<td>".$row["Nombre"]."</td>";
 									echo "<td>".$row["email"]."</td>";
 									echo "<td>".$row["telefono"]."</td>";
 									echo "<td>".$row["local"]."</td>";
 									echo "<td>".$row["prendas"]."</td>";
 									echo "<td>s/. ".$row["monto"]."</td>";
-									$eliminar=$row["idboleta"];
-									echo "<td><a href='eliminar_compra.php?c_id=".$eliminar."'>Eliminar</a></td>";
-									echo"</tr>";
-
 									$i = $i+1;
 								}
 							?>	
