@@ -218,7 +218,7 @@
 						?>
 					<table class="table table-striped col-sm-3 float-right">
 						<?php 
-							if($subtotal>200){
+							if($subtotal>300){
 							$envio=$envio;
 						}else{
 							$envio=29;
@@ -245,11 +245,15 @@
 								<td>S/. <?php echo $imp ?></td>
 							</tr>
 							<?php 
+							//$total = $subtotal + $envio + $imp
 								}
+							?>
+							<?php 
+							$total = $subtotal + $envio + $imp 
 							?>
 							<tr>
 								<th>Total</th>
-								<td>S/. <?php echo $subtotal ?></td>
+								<td>S/. <?php echo $total ?></td>
 							</tr>
 						</tbody>
 						<?php 
