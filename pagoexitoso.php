@@ -157,8 +157,10 @@
 					<table class="timetable_sub">
 				<div class="checkout-left">
 				<div class="address_form_electronics mt-sm-5 mt-4">
-					<div class="checkout-right-basket">
+					<div class="checkout-right-basket">	
 						<a href="ver-producto2.php">Continuar comprando
+						</a>
+						<a href="lista_compras_cliente.php">Ver historial de compras
 						</a>
 					</div>
 				</div>

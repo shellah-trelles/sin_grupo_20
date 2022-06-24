@@ -1,8 +1,17 @@
+<?php
+session_start();
+if($_SESSION["conectado"] != "1"){
+	header("Location: login.html");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>NBA Collection | Ver camisetas</title>
+	<title>NBA Collection | Historial de compras </title>
+	
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -91,7 +100,7 @@
 
 	<!-- modals -->
 	<!-- log in -->
-
+	<!-- //modal -->
 	<div class="navbar-inner">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">	
@@ -99,29 +108,38 @@
 				    aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="col-md-3 logo_electronics">
-					<h1 class="text-center">
+				<div class="col-md-9 logo_electronics">
+					<h1 class="text-lg-left">
 						<a href="#" class="font-weight-bold font-italic">
-							<img src="imagenes/nc_logo.png" alt=" " class="img-fluid" style="height: 70px;"> NBA Collection
+							<img src="imagenes/cc.png" alt=" " class="img-fluid" style="height: 120px;">Tienda Online
 						</a>
 					</h1>
 				</div>
-
-				<div class="col-md-9 header mt-4 mb-md-0 mb-4" class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto text-center mr-xl-5">
+				<div class="col-md-3 header mt-4 mb-md-0 mb-4 text-right" class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto mr-xl-5">
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="ver-producto2.php">Inicio
+								<span class="sr-only">(current)</span>
+							</a>
 						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="cerrar_session.php">Salir
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						
 					</ul>
 				</div>
 			</nav>
 		</div>
-
+	</div>
+	
 	<!-- //banner-2 -->
 	<!-- page -->
 	
 	<!-- //page -->
 	<!-- checkout page -->
-
-		<div class="privacy py-sm-5 py-4">
+	<div class="privacy py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
 			<!-- tittle heading -->
 			<h3 class="tittle-storesl text-center mb-lg-5 mb-sm-4 mb-3">
@@ -142,9 +160,13 @@
 					<table class="timetable_sub">
 						<thead>
 							<tr>
-								<th>Nombre</th>
-								<th>Cantidad</th>
-								<th>Precio</th>
+								<th>#</th>
+								<th>Cliente</th>
+								<th>Email</th>
+								<th>Teléfono</th>
+								<th>Ciudad</th>
+								<th>Productos</th>
+								<th>Monto</th>
 								<th>Acción</th>
 							</tr>
 						</thead>
@@ -152,26 +174,20 @@
 						<tbody >
 							<?php
 
-								$consulta ="SELECT iddetalle_carrito as iddetalle_carrito, Nombre, idproducto_cd, Cantidad, Precio FROM detalle_carrito join producto on detalle_carrito.idproducto_cd=producto.idProducto";
-								//$consulta ="SELECT idProducto FROM producto on producto.idProducto = detalle_carrito.idproducto_cd";
+								$consulta ="SELECT idboleta as idboleta, name, email, telefono, local, prendas, monto FROM boleta";
 								$result = $mysql_conn->query($consulta);
 								$i = 1;
 								while($row = mysqli_fetch_array($result)){
 									echo "<tr>";
-									//echo "<td><img src=".$row["imagen"]." style = 'height:80px'></td>";
-									echo "<td>".$row["Nombre"]."</td>";
-									echo "<td>";
-									echo "<span>".$row["Cantidad"]."</span>";
-									echo "</td>";
-									echo"<td> s/ ".$row["Precio"]."</td>";
-									echo "<td class='invert'>";
-									echo "<div class='rem'><h1><a href='ver_editar.php?id_cd=".$row["iddetalle_carrito"]."'>";
-									echo "<div class='editar1'></div></a></h1>";
-									echo "</div>";
-									echo "<div class='rem'><h1><a href='eliminar.php?id_cd=".$row["iddetalle_carrito"]."'>";
-									echo "<div class='close1'></div></a></h1>";
-									echo "</div>";
-									echo "</td>";
+									echo "<td>$i</td>";
+									echo "<td>".$row["name"]."</td>";
+									echo "<td>".$row["email"]."</td>";
+									echo "<td>".$row["telefono"]."</td>";
+									echo "<td>".$row["local"]."</td>";
+									echo "<td>".$row["prendas"]."</td>";
+									echo "<td>s/. ".$row["monto"]."</td>";
+									$eliminar=$row["idboleta"];
+									echo "<td><a href='eliminar_compra.php?c_id=".$eliminar."'>Eliminar</a></td>";
 									echo"</tr>";
 
 									$i = $i+1;
@@ -180,81 +196,6 @@
 								
 						</tbody>
 					</table>
-				</div>
-			</div>
-			<div class="checkout-right-basket">
-				<div class="address_form_electronics mt-sm-3 mt-4">
-				<div class="checkout-right row" style="display:flex; justify-content: flex-end;">
-						<?php
-						$sql="SELECT * from producto join detalle_carrito on producto.idProducto = detalle_carrito.idproducto_cd";
-						$result = mysqli_query($mysql_conn, $sql);
-
-						$subtotal=0;
-						$envio=0;
-						$imp=0;
-						$total=0;
-
-						while($row = mysqli_fetch_assoc($result)){
-							$subtotal=$subtotal+($row["Precio"])*($row["cantidad"]);
-
-						}
-
-						
-						?>
-					<table class="table table-striped col-sm-3 float-right">
-						<?php 
-							if($subtotal>300){
-							$envio=$envio;
-						}else{
-							$envio=29;
-						}
-
-						if($subtotal>0){
-							?>
-						<tbody>
-							
-							<tr>
-								<th>Subtotal</th>
-								<td>S/. <?php echo $subtotal ?></td>
-							</tr>
-							<tr>
-								<th>Envio</th>
-								<td>S/. <?php echo $envio ?></td>
-							</tr>
-							<?php 
-								$imp=0.18*$envio;
-								if($imp>0){
-							?>
-							<tr>
-								<th>Impuesto</th>
-								<td>S/. <?php echo $imp ?></td>
-							</tr>
-							<?php 
-							//$total = $subtotal + $envio + $imp
-								}
-							?>
-							<?php 
-							$total = $subtotal + $envio + $imp 
-							?>
-							<tr>
-								<th>Total</th>
-								<td>S/. <?php echo $total ?></td>
-							</tr>
-						</tbody>
-						<?php 
-								}
-							?>
-					</table>
-				</div>
-			</div>
-			<div class="checkout-left">
-				<div class="address_form_electronics mt-sm-5 mt-4">
-					<div class="checkout-right-basket">
-						<a href="login_cliente.php">Proceder con el pago
-						</a>
-						<a href="ver-producto2.php">Continuar comprando
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -316,7 +257,7 @@
 						<h3 class="text-white font-weight-bold mb-3">Categorias</h3>
 						<ul>
 							<li class="mb-3">
-								<a href="product.php">camisetas</a>
+								<a href="ver-producto2.php">camisetas</a>
 							</li>
 							
 						</ul>

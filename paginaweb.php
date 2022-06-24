@@ -95,6 +95,11 @@
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="ver-producto2.php">VER CAMISETAS</a>
 						</li>
+                        <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="login_admin.php">INICIAR SESIÓN COMO ADMINISTRADOR </a>
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</nav>
