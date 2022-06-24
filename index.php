@@ -5,6 +5,7 @@ error_reporting(E_ERROR | E_PARSE);
   include "plantillas.php";
   include "data.php";
   include "templates.php";
+  include "local.php";
   echo $header_html;
   if(isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0){
  ?>
