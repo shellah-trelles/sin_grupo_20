@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -134,152 +132,45 @@
 
 	<!-- //banner-2 -->
 	<!-- page -->
-	<div class="services-breadcrumb">
-		<div class="electronics_inner_breadcrumb">
-		</div>
-	</div>
 	
-	<!-- payment page-->
-	<div class="privacy py-sm-3 py-4">
+	<!-- //page -->
+	<!-- checkout page -->
+
+		<div class="privacy py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
 			<!-- tittle heading -->
-			<h3 class="tittle-storesl text-center mb-lg-5 mb-sm-4 mb-2">
-				<span>P</span>ago</h3>
+			<h3 class="tittle-storesl text-center mb-lg-5 mb-sm-4 mb-3">
+				<span>P</span>ago exitoso
+			</h3>
 			<!-- //tittle heading -->
 			<div class="checkout-right">
-				<!--Horizontal Tab-->
-				<div id="parentHorizontalTab">
-					
-					<div class="resp-tabs-container hor_1">
-						<div>
-							<div class="sub-some child-momu mt-4">
-								<h5 class="font-weight-bold mb-2">Método de Pago</h5>
-								<ul>
-									<li>
-										<img src="images/pay2.png" alt="">
-									</li>
-									<li>
-										<img src="images/pay1.png" alt="">
-									</li>
-									<li>
-										<img src="images/pay4.png" alt="">
-									</li>
-								</ul>
-							</div>
-							<form action="registrar_compra.php" method="post" class="creditly-card-form electronicsinfo_form">
+				<div class="table-responsive">
 
-
-								<div class="creditly-wrapper electronics-stroe, stores_electronicsits_wrapper">
-
-									<div class="credit-card-wrapper">
-
-										<div class="first-row form-group">
-
-											<div class="controls">
-												<label class="control-label">Nombres</label>
-												<input class="billing-address-name form-control" type="text" name="name" placeholder="" required="">
-											</div>
-											<div class="controls">
-												<label class="control-label">Correo Electrónico</label>
-												<input class="billing-address-name form-control" type="text" name="email" placeholder="" required="">
-											</div>
-											<div class="controls">
-												<label class="control-label">Teléfono</label>
-												<input class="billing-address-name form-control" type="text" name="telefono" placeholder="" required="">
-											</div>
-											<div class="validate">
-
-												<label class="control-label">Local</label>
-												<select class="list_of_cities" name="ciudad" id="ciudad" class="select-city">
-													<optgroup label="Locales">
-														<option selected style="display:none;color:#eee;">Seleccione local</option>
-														<option>Piura</option>
-														<option>Castilla</option>
-													</optgroup>
-													
-												</select>
-											</div>
-											<div class="controls">
-												<label class="control-label">Dirección</label>
-												<input class="billing-address-name form-control" type="text" name="direccion" placeholder="" required="">
-											</div>
-											<div class="stores_electronicsits_card_number_grids my-3">
-												<div class="stores_electronicsits_card_number_grid_left">
-													<div class="controls">
-														<label class="control-label">Número de Tarjeta</label>
-														<input class="number credit-card-number form-control" type="text" name="name_tarje" inputmode="numeric" placeholder="" required="">
-													</div>
-												</div>
-												<div class="stores_electronicsits_card_number_grid_right mt-2">
-													<div class="controls">
-														<label class="control-label">CVV</label>
-														<input class="security-code form-control" Â· inputmode="numeric" type="text" name="security-code" placeholder="" required="">
-													</div>
-												</div>
-												<div class="clear"> </div>
-											</div>
-											<div class="controls">
-												<label class="control-label">Fecha de Expiración</label>
-												<input class="expiration-month-and-year form-control" type="text" name="expiration-month-and-year" placeholder="MM / AA" required="">
-											</div>
-										</div>
-										<div class="checkout-right-basket">
-											
 <?php
 
 	include("conexion.php");
 
 	$mysql_conn = db_connect();
 
-$sql="SELECT * from producto join detalle_carrito on producto.idProducto = detalle_carrito.idproducto_cd";
-						$result = mysqli_query($mysql_conn, $sql);
+?>
 
-						$subtotal=0;
-						$envio=0;
-						$imp=0;
-						$total=0;
-						
-
-						while($row = mysqli_fetch_assoc($result)){
-							
-							$subtotal=$subtotal+($row["Precio"])*($row["cantidad"]);
-
-						}
-
-						if($subtotal>200){
-							$envio=$envio;
-						}else{
-							$envio=29;
-						}
-
-						$imp=0.18*$envio;
-						if($imp>0){
-						}
-						$total=1.18*($envio)+$subtotal;
-						if($subtotal>0){
-						echo "<a>Monto: s/ ".$total."<span></span></a>";	
-						}
-						
-
-?>		
-										</div>
-										<button type="submit" class="submit mt-3">
-											<span>Hacer el pago </span>
-										</button>
-									</div>
-								</div>
-							</form>
-
-						</div>
+					<table class="timetable_sub">
+				<div class="checkout-left">
+				<div class="address_form_electronics mt-sm-5 mt-4">
+					<div class="checkout-right-basket">
+						<a href="ver-producto2.php">Continuar comprando
+						</a>
 					</div>
 				</div>
-				<!--Plug-in Initialisation-->
 			</div>
 		</div>
 	</div>
-	<!-- //payment page -->
+
+	
+	<!-- //checkout page -->
 
 	<!-- middle section -->
+
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">
@@ -304,7 +195,6 @@ $sql="SELECT * from producto join detalle_carrito on producto.idProducto = detal
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Envíos Rápidos</h3>
-								<p>A Lima y a Provincias</p>
 							</div>
 						</div>
 					</div>
@@ -332,7 +222,7 @@ $sql="SELECT * from producto join detalle_carrito on producto.idProducto = detal
 						<h3 class="text-white font-weight-bold mb-3">Categorias</h3>
 						<ul>
 							<li class="mb-3">
-								<a href="ver-producto2.php">camisetas</a>
+								<a href="product.php">camisetas</a>
 							</li>
 							
 						</ul>
@@ -373,7 +263,6 @@ $sql="SELECT * from producto join detalle_carrito on producto.idProducto = detal
 
 		<!-- footer fourth section -->
 	</footer>
-	<!-- middle section -->
 
 	<!-- js-files -->
 	<!-- jquery -->
@@ -460,74 +349,49 @@ $sql="SELECT * from producto join detalle_carrito on producto.idProducto = detal
 	</script>
 	<!-- //password-script -->
 
-	<!-- easy-responsive-tabs -->
-	<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
-	<script src="js/easyResponsiveTabs.js"></script>
-
+	<!-- quantity -->
 	<script>
-		$(document).ready(function () {
-			//Horizontal Tab
-			$('#parentHorizontalTab').easyResponsiveTabs({
-				type: 'default', //Types: default, vertical, accordion
-				width: 'auto', //auto or any width like 600px
-				fit: true, // 100% fit in a container
-				tabidentify: 'hor_1', // The tab groups identifier
-				activate: function (event) { // Callback function if tab is switched
-					var $tab = $(this);
-					var $info = $('#nested-tabInfo');
-					var $name = $('span', $info);
-					$name.text($tab.text());
-					$info.show();
-				}
+		$('.value-plus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) + 1;
+			divUpd.text(newVal);
+		});
+
+		$('.value-minus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) - 1;
+			if (newVal >= 1) divUpd.text(newVal);
+		});
+	</script>
+	<!--quantity-->
+	<script>
+		$(document).ready(function (c) {
+			$('.close1').on('click', function (c) {
+				$('.rem1').fadeOut('slow', function (c) {
+					$('.rem1').remove();
+				});
 			});
 		});
 	</script>
-	<!-- //easy-responsive-tabs -->
-
-	<!-- credit-card -->
-	<script src="js/creditly.js"></script>
-	<link rel="stylesheet" href="css/creditly.css" type="text/css" media="all" />
 	<script>
-		$(function () {
-			var creditly = Creditly.initialize(
-				'.creditly-wrapper .expiration-month-and-year',
-				'.creditly-wrapper .credit-card-number',
-				'.creditly-wrapper .security-code',
-				'.creditly-wrapper .card-type');
-
-
-			// $(".creditly-card-form .submit").click(function (e) {
-			// 	e.preventDefault();|
-			// 	var output = creditly.validate();
-			// 	if (output) {
-			// 		// Your validated credit card output
-			// 		console.log(output);
-			// 	}
-			// });
-		});
-	</script>
-
-	<!-- creditly2 (for paypal) -->
-	<script src="js/creditly2.js"></script>
-	<script>
-		$(function () {
-			var creditly = Creditly2.initialize(
-				'.creditly-wrapper .expiration-month-and-year-2',
-				'.creditly-wrapper .credit-card-number-2',
-				'.creditly-wrapper .security-code-2',
-				'.creditly-wrapper .card-type');
-
-			$(".creditly-card-form-2 .submit").click(function (e) {
-				e.preventDefault();
-				var output = creditly.validate();
-				if (output) {
-					// Your validated credit card output
-					console.log(output);
-				}
+		$(document).ready(function (c) {
+			$('.close2').on('click', function (c) {
+				$('.rem2').fadeOut('slow', function (c) {
+					$('.rem2').remove();
+				});
 			});
 		});
 	</script>
-	<!-- //credit-card -->
+	<script>
+		$(document).ready(function (c) {
+			$('.close3').on('click', function (c) {
+				$('.rem3').fadeOut('slow', function (c) {
+					$('.rem3').remove();
+				});
+			});
+		});
+	</script>
+	<!-- //quantity -->
 
 	<!-- smoothscroll -->
 	<script src="js/SmoothScroll.min.js"></script>
@@ -572,6 +436,7 @@ $sql="SELECT * from producto join detalle_carrito on producto.idProducto = detal
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+	<script  src="script/producto.js"></script>
 
 </body>
 

@@ -49,6 +49,6 @@ $sql="DELETE from detalle_carrito";
 
 mysqli_query($mysql_conn, $sql);
 echo "Pago exitoso";
-header("Location:checkout.php");
+header("Location:pagoexitoso.php");
 
 ?>
