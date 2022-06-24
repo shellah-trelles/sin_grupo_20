@@ -1,8 +1,3 @@
-<?php
-	include("conexion.php");
-	$mysql_conn = db_connect();
-
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -134,96 +129,153 @@
 				</div>
 			</nav>
 		</div>
-	
-	<div class="page-head_electronics_info_storesl">
 
-	</div>
 	<!-- //banner-2 -->
 	<!-- page -->
-	<div class="services-breadcrumb">
-		<div class="electronics_inner_breadcrumb">
-			<div class="container">
-				<ul class="stores_short">
-					<li>
-						<a>NBA Collection: Camisetas de colección</a>
-						<i>|</i>
-					</li>
-					<li>Camisetas disponibles</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!-- //page -->
-	<!-- top Products -->
-	<div class="ads-grid py-sm-5 py-4">
-		<div class="container py-xl-4 py-lg-2">
-			
-			<div class="row">
-				<!-- product left -->
-				<div class="electronicsinfo-ads-display col-lg-12">
-					<div class="wrapper">
-						<!-- first section -->
-						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-							<div class="row">
-								<?php
-
-									$consulta ="SELECT * from producto p INNER JOIN local l ON p.idlocal = l.idlocal";
-									/*echo"<img src = 'imagenes/los_angeles_lakers.jpg'";
-                                    echo"<img src = 'imagenes/boston_celtics.jpg'>";
-                                    echo"<img src = 'imagenes/chicago_bulls.jpg'>";
-                                    echo"<img src = 'imagenes/san_antonio_spurs.jpg'>";
-                                    echo"<img src = 'imagenes/miami_heat.jpg'>";*/
-                                    //echo"<img src = 'imagenes/camisetascollage.jpeg'>";
-                                    
-                                    
-
-									$result = $mysql_conn->query($consulta);
-                                    echo"<img src = 'imagenes/cc.jpeg'>";
-
-									while($row = mysqli_fetch_array($result)){
-                                            
-											echo"<div class='col-md-4 product-men'>";
-											echo"<div class='men-pro-item simpleCart_shelfItem'>";
-											echo"<div class='men-thumb-item text-center' style='height: 1px width: 1px'>";
-											//echo"<img src='".$row['imagen']."' alt=''>";
-                                            //echo"<img src = 'imagenes/boston_celtics.jpg'>";
-											echo"<div class='men-cart-pro'>";
-											echo"<div class='inner-men-cart-pro'>";
-											
-											echo"</div>";
-											echo"</div>";
-											echo"</div>";
-											echo"<div class='item-info-product text-center border-top mt-4'>";
-											echo"<h4 class='pt-1'>";
-											echo"<a href='single.html'>".$row['Nombre']."</a>";
-											echo"</h4>";
-											echo"<div class='info-product-price my-2'>";
-											echo"<span class='item_price'>s/ ".$row['Precio']."</span>";
-											// echo"<del>s/ ".$row['precio_inicial']."</del>";
-											echo"</div>";
-											echo"<div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out mb-4'>";
-											echo"<form action='registrar_carrito.php' method='post'>";
-											echo"<fieldset>";
-											echo"<input type='hidden' name='id' value='".$row["idProducto"]."' />";
-											echo"<input type='hidden' name='cantidad' value='1' />";
-											echo"<input type='submit' name='submit' value='Añadir al carrito' class='button btn' />";
-											echo"</fieldset>";
-											echo"</form>";
-											echo"</div>";
-											echo"</div>";
-											echo"</div>";
-											echo"</div>";
-										}
-									
-								?>
 	
-							</div>
-						</div>
+	<!-- //page -->
+	<!-- checkout page -->
+
+		<div class="privacy py-sm-5 py-4">
+		<div class="container py-xl-4 py-lg-2">
+			<!-- tittle heading -->
+			<h3 class="tittle-storesl text-center mb-lg-5 mb-sm-4 mb-3">
+				<span>C</span>ompras
+			</h3>
+			<!-- //tittle heading -->
+			<div class="checkout-right">
+				<div class="table-responsive">
+
+<?php
+
+	include("conexion.php");
+
+	$mysql_conn = db_connect();
+
+?>
+
+					<table class="timetable_sub">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Cantidad</th>
+								<th>Precio</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+
+						<tbody >
+							<?php
+
+								$consulta ="SELECT iddetalle_carrito as iddetalle_carrito, Nombre, idproducto_cd, Cantidad, Precio FROM detalle_carrito join producto on detalle_carrito.idproducto_cd=producto.idProducto";
+								//$consulta ="SELECT idProducto FROM producto on producto.idProducto = detalle_carrito.idproducto_cd";
+								$result = $mysql_conn->query($consulta);
+								$i = 1;
+								while($row = mysqli_fetch_array($result)){
+									echo "<tr>";
+									//echo "<td><img src=".$row["imagen"]." style = 'height:80px'></td>";
+									echo "<td>".$row["Nombre"]."</td>";
+									echo "<td>";
+									echo "<span>".$row["Cantidad"]."</span>";
+									echo "</td>";
+									echo"<td> s/ ".$row["Precio"]."</td>";
+									echo "<td class='invert'>";
+									echo "<div class='rem'><h1><a href='ver_editar.php?id_cd=".$row["iddetalle_carrito"]."'>";
+									echo "<div class='editar1'></div></a></h1>";
+									echo "</div>";
+									echo "<div class='rem'><h1><a href='eliminar.php?id_cd=".$row["iddetalle_carrito"]."'>";
+									echo "<div class='close1'></div></a></h1>";
+									echo "</div>";
+									echo "</td>";
+									echo"</tr>";
+
+									$i = $i+1;
+								}
+							?>	
+								
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="checkout-right-basket">
+				<div class="address_form_electronics mt-sm-3 mt-4">
+				<div class="checkout-right row" style="display:flex; justify-content: flex-end;">
+						<?php
+						$sql="SELECT * from prenda join carrito_detalle on prenda.id =carrito_detalle.prenda_id";
+						$result = mysqli_query($mysql_conn, $sql);
+
+						$subtotal=0;
+						$envio=0;
+						$imp=0;
+						$total=0;
+
+						while($row = mysqli_fetch_assoc($result)){
+							$subtotal=$subtotal+($row["precio_actual"])*($row["cantidad"]);
+
+						}
+
+						
+						?>
+					<table class="table table-striped col-sm-3 float-right">
+						<?php 
+							if($subtotal>200){
+							$envio=$envio;
+						}else{
+							$envio=29;
+						}
+
+						if($subtotal>0){
+							?>
+						<tbody>
+							
+							<tr>
+								<th>Subtotal</th>
+								<td>S/. <?php echo $subtotal ?></td>
+							</tr>
+							<tr>
+								<th>Envio</th>
+								<td>S/. <?php echo $envio ?></td>
+							</tr>
+							<?php 
+								$imp=0.18*$envio;
+								if($imp>0){
+							?>
+							<tr>
+								<th>Impuesto</th>
+								<td>S/. <?php echo $imp ?></td>
+							</tr>
+							<?php 
+								}
+							?>
+							<tr>
+								<th>Total</th>
+								<td>S/. <?php echo $subtotal ?></td>
+							</tr>
+						</tbody>
+						<?php 
+								}
+							?>
+					</table>
+				</div>
+			</div>
+			<div class="checkout-left">
+				<div class="address_form_electronics mt-sm-5 mt-4">
+					<div class="checkout-right-basket">
+						<a href="payment.php">Proceder con el pago
+						</a>
+						<a href="product.php">Continuar comprando
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	
+	<!-- //checkout page -->
+
+	<!-- middle section -->
+
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">
@@ -317,8 +369,6 @@
 
 		<!-- footer fourth section -->
 	</footer>
-	<!-- //footer -->
-	<!-- //copyright -->
 
 	<!-- js-files -->
 	<!-- jquery -->
@@ -405,6 +455,50 @@
 	</script>
 	<!-- //password-script -->
 
+	<!-- quantity -->
+	<script>
+		$('.value-plus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) + 1;
+			divUpd.text(newVal);
+		});
+
+		$('.value-minus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) - 1;
+			if (newVal >= 1) divUpd.text(newVal);
+		});
+	</script>
+	<!--quantity-->
+	<script>
+		$(document).ready(function (c) {
+			$('.close1').on('click', function (c) {
+				$('.rem1').fadeOut('slow', function (c) {
+					$('.rem1').remove();
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function (c) {
+			$('.close2').on('click', function (c) {
+				$('.rem2').fadeOut('slow', function (c) {
+					$('.rem2').remove();
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function (c) {
+			$('.close3').on('click', function (c) {
+				$('.rem3').fadeOut('slow', function (c) {
+					$('.rem3').remove();
+				});
+			});
+		});
+	</script>
+	<!-- //quantity -->
+
 	<!-- smoothscroll -->
 	<script src="js/SmoothScroll.min.js"></script>
 	<!-- //smoothscroll -->
@@ -448,6 +542,7 @@
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+	<script  src="script/producto.js"></script>
 
 </body>
 
