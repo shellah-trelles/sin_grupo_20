@@ -78,15 +78,22 @@
 				<div class="col-md-3 logo_electronics">
 					<h1 class="text-center">
 						<a href="#" class="font-weight-bold font-italic">
-							<img  alt=" " class="img-fluid" style="height: 120px;">NBA Collection
+                        <img src="imagenes/nc_logo.png" alt=" " class="img-fluid" style="height: 70px;">NBA Collection
 						</a>
 					</h1>
 				</div>
 
 				<div class="col-md-9 header mt-4 mb-md-0 mb-4" class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto text-center mr-xl-5">		
+					<ul class="navbar-nav ml-auto text-center mr-xl-5">
+						<!--<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product.php">camisetas
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>-->
+						
+						
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="ver-producto.php">VER CAMISETAS</a>
+							<a class="nav-link" href="ver-producto2.php">VER CAMISETAS</a>
 						</li>
 					</ul>
 				</div>
@@ -105,74 +112,15 @@
 			<div class="container">
 				<ul class="stores_short">
 					<li>
-						<a>NBA Collection</a> <!--href="product.php"-->
-						<i>|</i>
+						<a>NBA Collection: Camisetas de colección</a> <!--href="product.php"-->
+                        <i>|</i>
+					<li>inicio</li>
 					</li>
-					<li>camisetas</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<!-- //page -->
-	<!-- top Products -->
-	<div class="ads-grid py-sm-5 py-4">
-		<div class="container py-xl-4 py-lg-2">
-			
-			<div class="row">
-				<!-- product left -->
-				<div class="electronicsinfo-ads-display col-lg-12">
-					<div class="wrapper">
-						<!-- first section -->
-						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-							<div class="row">
-								<?php
 
-									$consulta ="SELECT * from producto p INNER JOIN local l ON p.idlocal = l.idlocal";
-									
-
-									$result = $mysql_conn->query($consulta);
-									while($row = mysqli_fetch_array($result)){
-											echo"<div class='col-md-4 product-men'>";
-											echo"<div class='men-pro-item simpleCart_shelfItem'>";
-											echo"<div class='men-thumb-item text-center' style='height: 1px width: 1px'>";
-											// echo"<img src='".$row['imagen']."' alt=''>";
-											echo"<div class='men-cart-pro'>";
-											echo"<div class='inner-men-cart-pro'>";
-											
-											echo"</div>";
-											echo"</div>";
-											echo"</div>";
-											echo"<div class='item-info-product text-center border-top mt-4'>";
-											echo"<h4 class='pt-1'>";
-											echo"<a href='single.html'>".$row['Nombre']."</a>";
-											echo"</h4>";
-											echo"<div class='info-product-price my-2'>";
-											echo"<span class='item_price'>s/ ".$row['Precio']."</span>";
-											// echo"<del>s/ ".$row['precio_inicial']."</del>";
-											echo"</div>";
-											echo"<div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out mb-4'>";
-											echo"<form action='registrar_carrito.php' method='post'>";
-											echo"<fieldset>";
-											echo"<input type='hidden' name='id' value='".$row["idProducto"]."' />";
-											echo"<input type='hidden' name='cantidad' value='1' />";
-											echo"<input type='submit' name='submit' value='Añadir al carrito' class='button btn' />";
-											echo"</fieldset>";
-											echo"</form>";
-											echo"</div>";
-											echo"</div>";
-											echo"</div>";
-											echo"</div>";
-										}
-									
-								?>
-	
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">

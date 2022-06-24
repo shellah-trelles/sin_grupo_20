@@ -4,10 +4,10 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="zxx">
 
 <head>
-	<title>NBA Collection | camisetas</title>
+	<title>NBA Collection</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -51,23 +51,52 @@
 		<div class="container-fluid">
 			<div class="row main-top-storesl py-2">
 				<div class="col-lg-6 header-most-top">
-                <p class="text-white text-lg-left text-center">Envios gratis por compras desde S/300.00
+					<p class="text-white text-lg-left text-center">Envios gratis por compras desde S/300.00
 						<i class="fas fa-shopping-cart ml-1"></i>
 					</p>
 				</div>
 				<div class="col-lg-6 header-right mt-lg-0 mt-2 text-right">
-					
-					
-					
+					<!-- header lists -->
+					<ul>
+						<li class="text-center border-right text-white">
+							<a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
+								<i class="fas fa-map-marker mr-2"></i> Ubicación</a>
+						</li>
+						<li class="text-center border-right text-white">
+							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+								<i class="fas fa-truck mr-2"></i>Track Order</a>
+						</li>
+						<li class="text-center text-white">
+							<i class="fas fa-phone mr-2"></i> 001 234 5678
+						</li>
+						
+					</ul>
+					<!-- //header lists -->
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
+	<!-- Button trigger modal(select-location) -->
+	<div id="small-dialog1" class="mfp-hide">
+		<div class="select-city">
+			<h3>
+				<i class="fas fa-map-marker"></i> Por favor seleccione distrito</h3>
+			<select class="list_of_cities">
+				<optgroup label="Locales">
+					<option selected style="display:none;color:#eee;">Seleccionar distrito</option>
+					<option>Piura</option>
+					<option>Castilla</option>
+				</optgroup>
+			</select>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 	<!-- //shop locator (popup) -->
 
 	<!-- modals -->
 	<!-- log in -->
+
 	<div class="navbar-inner">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">	
@@ -78,23 +107,34 @@
 				<div class="col-md-3 logo_electronics">
 					<h1 class="text-center">
 						<a href="#" class="font-weight-bold font-italic">
-							<img  alt=" " class="img-fluid" style="height: 120px;">NBA Collection
+							<img src="imagenes/nc_logo.png" alt=" " class="img-fluid" style="height: 70px;"> NBA Collection
 						</a>
 					</h1>
 				</div>
 
 				<div class="col-md-9 header mt-4 mb-md-0 mb-4" class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto text-center mr-xl-5">		
+					<ul class="navbar-nav ml-auto text-center mr-xl-5">
+					<!--	<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product.php">BLusas
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product2.php">Jeans
+								<span class="sr-only">(current)</span>
+							</a>
+						</li> -->
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="ver-producto.php">VER CAMISETAS</a>
+							<a class="nav-link" href="about.html">Sobre Nostros</a>
+						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="contact.html">Contáctanos</a>
 						</li>
 					</ul>
 				</div>
 			</nav>
 		</div>
-	</div>
-	<!-- //navigation -->
-	<!-- banner-2 -->
+	
 	<div class="page-head_electronics_info_storesl">
 
 	</div>
@@ -105,10 +145,10 @@
 			<div class="container">
 				<ul class="stores_short">
 					<li>
-						<a>NBA Collection</a> <!--href="product.php"-->
+						<a>NBA Collecition</a>
 						<i>|</i>
 					</li>
-					<li>camisetas</li>
+					<li>Camisetas disponibles</li>
 				</ul>
 			</div>
 		</div>
@@ -128,14 +168,25 @@
 								<?php
 
 									$consulta ="SELECT * from producto p INNER JOIN local l ON p.idlocal = l.idlocal";
-									
+									/*echo"<img src = 'imagenes/los_angeles_lakers.jpg'";
+                                    echo"<img src = 'imagenes/boston_celtics.jpg'>";
+                                    echo"<img src = 'imagenes/chicago_bulls.jpg'>";
+                                    echo"<img src = 'imagenes/san_antonio_spurs.jpg'>";
+                                    echo"<img src = 'imagenes/miami_heat.jpg'>";*/
+                                    //echo"<img src = 'imagenes/camisetascollage.jpeg'>";
+                                    
+                                    
 
 									$result = $mysql_conn->query($consulta);
+                                    echo"<img src = 'imagenes/cc.jpeg'>";
+
 									while($row = mysqli_fetch_array($result)){
+                                            
 											echo"<div class='col-md-4 product-men'>";
 											echo"<div class='men-pro-item simpleCart_shelfItem'>";
 											echo"<div class='men-thumb-item text-center' style='height: 1px width: 1px'>";
-											// echo"<img src='".$row['imagen']."' alt=''>";
+											//echo"<img src='".$row['imagen']."' alt=''>";
+                                            //echo"<img src = 'imagenes/boston_celtics.jpg'>";
 											echo"<div class='men-cart-pro'>";
 											echo"<div class='inner-men-cart-pro'>";
 											
@@ -186,7 +237,7 @@
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Envíos Gratis</h3>
-								<p>Por compras superiores a s/ 300.00</p>
+								<p>Por compras superiores a s/ 200.00</p>
 							</div>
 						</div>
 					</div>
@@ -198,7 +249,7 @@
 							<div class="col-8 text-form-footer">
 								<h3>Envíos Rápidos</h3>
 								<p>A Lima y a Provincias</p>
-                                    </div>
+							</div>
 						</div>
 					</div>
 					<div class="col-md-4 offer-footer">
@@ -208,7 +259,7 @@
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Gran Variedad</h3>
-								<p>de camisetas</p>
+								<p>de Productos</p>
 							</div>
 						</div>
 					</div>
@@ -225,9 +276,11 @@
 						<h3 class="text-white font-weight-bold mb-3">Categorias</h3>
 						<ul>
 							<li class="mb-3">
-								<a href="product.php">camisetas</a>
+								<a href="product.php">Blusas </a>
 							</li>
-							
+							<li class="mb-3">
+								<a href="product2.php">Jeans</a>
+							</li>
 						</ul>
 					</div>
 					<!-- //footer categories -->
@@ -247,14 +300,12 @@
 						<h3 class="text-white font-weight-bold mb-3">Datos de Contacto</h3>
 						<ul>
 							<li class="mb-3">
-								<i class="fas fa-map-marker"></i> 123 comercio, Principal.</li>
-                                <li class="mb-3">
-								<i class="fas fa-map-marker"></i> 345 progreso, Castilla.</li>
+								<i class="fas fa-map-marker"></i> 123 Sebastian, Piura.</li>
 							<li class="mb-3">
-								<i class="fas fa-mobile"></i> 903875648 </li>
+								<i class="fas fa-mobile"></i> 987 654 3333 </li>
 							<li class="mb-3">
 								<i class="fas fa-envelope-open"></i>
-								<a href="#">NBACollection@example.com</a>
+								<a href="#">nicyes@example.com</a>
 							</li>
 						</ul>
 					</div>
@@ -267,7 +318,6 @@
 		<!-- footer fourth section -->
 	</footer>
 	<!-- //footer -->
-	<!-- copyright -->
 	<!-- //copyright -->
 
 	<!-- js-files -->
@@ -398,9 +448,7 @@
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
-	<script src="script/producto.js"></script>
 
 </body>
 
 </html>
-
