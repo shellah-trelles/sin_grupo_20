@@ -201,7 +201,7 @@
 				<div class="address_form_electronics mt-sm-3 mt-4">
 				<div class="checkout-right row" style="display:flex; justify-content: flex-end;">
 						<?php
-						$sql="SELECT * from prenda join carrito_detalle on prenda.id =carrito_detalle.prenda_id";
+						$sql="SELECT * from producto join detalle_carrito on producto.idProducto = detalle_carrito.idproducto_cd";
 						$result = mysqli_query($mysql_conn, $sql);
 
 						$subtotal=0;
@@ -210,7 +210,7 @@
 						$total=0;
 
 						while($row = mysqli_fetch_assoc($result)){
-							$subtotal=$subtotal+($row["precio_actual"])*($row["cantidad"]);
+							$subtotal=$subtotal+($row["Precio"])*($row["cantidad"]);
 
 						}
 
@@ -289,7 +289,7 @@
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Envíos Gratis</h3>
-								<p>Por compras superiores a s/ 200.00</p>
+								<p>Por compras superiores a s/ 300.00</p>
 							</div>
 						</div>
 					</div>
@@ -300,7 +300,6 @@
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Envíos Rápidos</h3>
-								<p>A Lima y a Provincias</p>
 							</div>
 						</div>
 					</div>
@@ -328,11 +327,9 @@
 						<h3 class="text-white font-weight-bold mb-3">Categorias</h3>
 						<ul>
 							<li class="mb-3">
-								<a href="product.php">Blusas </a>
+								<a href="product.php">camisetas</a>
 							</li>
-							<li class="mb-3">
-								<a href="product2.php">Jeans</a>
-							</li>
+							
 						</ul>
 					</div>
 					<!-- //footer categories -->
@@ -352,12 +349,14 @@
 						<h3 class="text-white font-weight-bold mb-3">Datos de Contacto</h3>
 						<ul>
 							<li class="mb-3">
-								<i class="fas fa-map-marker"></i> 123 Sebastian, Piura.</li>
+								<i class="fas fa-map-marker"></i> 123 comercio, Principal.</li>
+                                <li class="mb-3">
+								<i class="fas fa-map-marker"></i> 345 progreso, Castilla.</li>
 							<li class="mb-3">
-								<i class="fas fa-mobile"></i> 987 654 3333 </li>
+								<i class="fas fa-mobile"></i> 903875648 </li>
 							<li class="mb-3">
 								<i class="fas fa-envelope-open"></i>
-								<a href="#">nicyes@example.com</a>
+								<a href="#">NBACollection@example.com</a>
 							</li>
 						</ul>
 					</div>
