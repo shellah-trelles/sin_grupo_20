@@ -7,7 +7,7 @@ function db_connect (){
 
 	$username="root";
 	$password="";
-	$dbname="datatrabajo";
+	$dbname="sin_grupo_20";
 
 	
 
