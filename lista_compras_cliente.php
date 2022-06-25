@@ -157,7 +157,6 @@
 								<th>Cliente</th>
 								<th>Email</th>
 								<th>Teléfono</th>
-								<th>Ciudad</th>
 								<th>Productos</th>
 								<th>Monto</th>
 							</tr>
@@ -166,20 +165,23 @@
 						<tbody >
 							<?php
 
-								$consulta ="SELECT idboleta as Nombre, email, telefono, local, prendas, monto FROM boleta join cliente on cliente.email_cliente = boleta.email ";
+								
+
 								//$consulta ="SELECT idboleta as idboleta, name, email, telefono, local, prendas, monto FROM boleta";
+								$consulta = "SELECT * FROM boleta WHERE idcliente_b = cliente.idcliente";
+								//$consulta2 = "SELECT email_cliente from cliente ";
+								$consulta ="SELECT idcliente_b as idcliente_b, name, email, telefono, local, prendas, monto FROM boleta join cliente on boleta.idcliente_b = cliente.idcliente";
 								$result = $mysql_conn->query($consulta);
 								$i = 1;
 								while($row = mysqli_fetch_array($result)){
 									echo "<tr>";
 									echo "<td>$i</td>";
-									echo "<td>".$row["Nombre"]."</td>";
+									echo "<td>".$row["name"]."</td>";
 									echo "<td>".$row["email"]."</td>";
 									echo "<td>".$row["telefono"]."</td>";
-									echo "<td>".$row["local"]."</td>";
 									echo "<td>".$row["prendas"]."</td>";
 									echo "<td>s/. ".$row["monto"]."</td>";
-									$i = $i+1;
+								$i = $i+1;
 								}
 							?>	
 								
